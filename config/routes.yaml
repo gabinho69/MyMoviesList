@@ -1,0 +1,4 @@
+
+page_accueil_Movie:
+  path: /Movie/
+  controller: App\Controller\MovieController::index

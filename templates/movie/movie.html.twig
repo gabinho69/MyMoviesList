@@ -1,0 +1,40 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Movie{% endblock %}
+
+{% block body %}
+    <h1>Movie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ movie.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ movie.description }}</td>
+            </tr>
+            <tr>
+                <th>Rating</th>
+                <td>{{ movie.score }}</td>
+            </tr>
+            <tr>
+                <th>Vote numbers</th>
+                <td>{{ movie.votersNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form method="post" action="{{ path('deletemovie', {'id': movie.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ movie.id) }}">
+    <button class="btn-primary">Delete  movie</button>
+    </form>
+
+
+
+
+{% endblock %}

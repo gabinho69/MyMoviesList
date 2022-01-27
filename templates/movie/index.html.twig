@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1>Home page</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Rating</th>
+                <th>Vote numbers</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for movie in movies %}
+            <tr>
+                <td>{{ movie.name }}</td>
+                <td>{{ movie.description }}</td>
+                <td>{{ movie.score }}</td>
+                <td>{{ movie.votersNumber }}</td>
+                <td>
+                    <a href="{{ path('movie', {'id': movie.id}) }}"><button class="btn-primary">MORE</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">There's no movie available</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>{{erreur}}</h1>
+ 
+{% endblock %}
